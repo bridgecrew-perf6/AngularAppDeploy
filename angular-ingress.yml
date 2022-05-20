@@ -1,0 +1,17 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: angular-web-tls
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`angular.ridha-bouazizi.me`) && PathPrefix(`/`)
+    services:
+    - name: angular-nfs
+      port: 80
+  tls:
+    certResolver: le
+
