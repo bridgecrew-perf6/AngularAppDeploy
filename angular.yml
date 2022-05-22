@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  # any Deployment name
+  name: angular-nfs
+  labels:
+    name: angular-nfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular-nfs
+  template:
+    metadata:
+      labels:
+        app: angular-nfs
+    spec:
+      containers:
+      - name: angular-nfs
+        image: r08041994b/edatask-front:1.0
+        ports:
+          - name: web
+            containerPort: 80
