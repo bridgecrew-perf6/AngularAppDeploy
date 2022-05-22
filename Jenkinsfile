@@ -4,7 +4,6 @@ pipeline {
     agent {
         kubernetes {
             yamlFile 'angular.yml'
-            yamlFile 'angular-ingress.yml'
         }
     }
     stages {
