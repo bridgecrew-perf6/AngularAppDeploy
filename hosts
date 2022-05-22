@@ -1,0 +1,2 @@
+[masters]
+master ansible_host=141.95.101.192 ansible_user=ubuntu

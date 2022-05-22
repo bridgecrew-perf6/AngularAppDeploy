@@ -1,0 +1,11 @@
+- name: copying manifests
+  become: true 
+  copy:
+    src: .
+    dest: /tmp
+    owner: ubuntu
+    group: ubuntu        
+    mode: 0777
+    
+- name: Apply manifests
+  shell: kubectl apply -f /tmp/angular.yml -f /tmp/angular-ingress.yml --kubeconfig=/home/ubuntu/.kube/config

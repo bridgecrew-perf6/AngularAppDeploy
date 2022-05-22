@@ -1,0 +1,6 @@
+- name: Setup networking for master
+  hosts: master
+  remote_user: ubuntu
+  become: yes
+  roles:
+    - deploy
