@@ -1,11 +1,17 @@
 #!groovy
-node {
-  stage('List pods') {
-    
-    withKubeCredentials([
-        [credentialsId: 'kubeconfig']
-    ]){
-          sh 'kubectl apply -f .'
-      }
+// Uses Declarative syntax to run commands inside a container.
+pipeline {
+    agent {
+        kubernetes {
+            yamlFile 'angular.yml'
+            yamlFile 'angular-ingress.yml'
+        }
+    }
+    stages {
+        stage('Main') {
+            steps {
+                sh 'hostname'
+            }
+        }
     }
 }
