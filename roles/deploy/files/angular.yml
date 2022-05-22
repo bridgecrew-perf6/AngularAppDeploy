@@ -21,15 +21,3 @@ spec:
         ports:
           - name: web
             containerPort: 80
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: angular-nfs
-spec:
-  ports:
-  - port: 80
-    name: web
-    protocol: TCP
-  selector:
-    app: angular-nfs
