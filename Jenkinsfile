@@ -1,7 +1,7 @@
 #!groovy
 node {
   stage('List pods') {
-    withKubeConfig([namespace: "default"]) {
+    withKubeConfig([namespace: "cicd"]) {
           sh 'kubectl apply -f .'
         }
     }
