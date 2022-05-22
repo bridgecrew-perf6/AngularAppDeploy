@@ -1,13 +1,12 @@
 #!groovy
 // Uses Declarative syntax to run commands inside a container.
 pipeline {
-    agent {
-        kubernetes {}
-    }
+    agent any
     stages {
-        stage('Main') {
+        stage('Deploy angular app') {
             steps {
-                container('kubectl') {
+                script {
+                    sh '''ls'''
                     kubernetesDeploy(configs: "angular.yml", kubeconfigId: "kubeconfig")
                 }
             }
