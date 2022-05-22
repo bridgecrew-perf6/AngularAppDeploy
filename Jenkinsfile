@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Main') {
             steps {
-                script {
+                container('kubectl') {
+                    withKubeConfig([kubeconfigId: "kubeconfig"]) {
+                        sh 'kubectl apply -f .'
+                    }
                     kubernetesDeploy(configs: "angular.yml", kubeconfigId: "kubeconfig")
                 }
             }
